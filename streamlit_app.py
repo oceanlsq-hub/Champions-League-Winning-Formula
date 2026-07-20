@@ -33,6 +33,7 @@ attack, defense, combined = load_data()
 
 df = attack[["Team", "GF", "Poss"]].merge(combined[["Team", "GoalsScored", "GoalsConceded"]], on="Team")
 df["GD"] = df["GoalsScored"] - df["GoalsConceded"]
+df["GA"] = df["GoalsConceded"]
 
 st.subheader("Raw Data Preview")
 tab1, tab2, tab3 = st.tabs(["Attack Stats", "Defense Stats", "Combined"])
