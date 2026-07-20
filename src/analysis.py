@@ -54,6 +54,44 @@ ranking = combined.sort_values(
 )
 
 print(ranking.head(15))
+
+# =========================
+# 相关系数热力图
+# =========================
+print("\n=== Correlation Heatmap ===\n")
+
+combined_corr = combined.copy()
+combined_corr["Poss"] = attack["Poss"]  # add possession
+
+plt.figure(figsize=(8, 6))
+corr_matrix = combined_corr[["GF", "GA", "GD"]].corr()
+sns.heatmap(corr_matrix, annot=True, cmap="coolwarm", vmin=-1, vmax=1,
+            square=True, linewidths=1)
+plt.title("Correlation: GF, GA, GD")
+plt.tight_layout()
+plt.savefig(os.path.join("..", "charts", "correlation_heatmap.png"))
+plt.show()
+
+# =========================
+# Possession vs Goals 散点图
+# =========================
+print("\n=== Possession vs Goals Scored ===\n")
+corr_poss = combined_corr["Poss"].corr(combined_corr["GF"])
+print(f"Correlation between Possession and Goals Scored: {corr_poss:.3f}")
+
+plt.figure(figsize=(10, 6))
+plt.scatter(combined_corr["Poss"], combined_corr["GF"], alpha=0.7, s=80, color="purple")
+for _, row in combined_corr.iterrows():
+    plt.annotate(row["Team"], (row["Poss"], row["GF"]), fontsize=8, ha="center", va="bottom")
+plt.xlabel("Possession (%)")
+plt.ylabel("Goals Scored")
+plt.title("Possession vs Goals Scored (2024-25 UCL)")
+plt.grid(True, alpha=0.3)
+plt.tight_layout()
+plt.savefig(os.path.join("..", "charts", "possession_vs_goals.png"))
+plt.show()
+
+
 import matplotlib.pyplot as plt
 
 
