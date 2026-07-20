@@ -86,3 +86,7 @@ The full analysis process is documented in [`notebooks/ucl_analysis.ipynb`](note
 ## License
 
 MIT
+
+## Blog
+
+Read the full analysis on Medium: [What Makes a Champions League Winner? A Data-Driven Analysis](https://medium.com/@linsq0529/what-makes-a-champions-league-winner-304d8d7f4486)
