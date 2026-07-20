@@ -9,6 +9,11 @@ pip install -r requirements.txt
 jupyter notebook notebooks/ucl_analysis.ipynb
 ```
 
+## Live Demo
+## Live Demo
+
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://champions-league-winning-formula-uw7ckstxi7qj4ecrlmboc8.streamlit.app/)
+
 ## Dataset
 
 Squad-level statistics from the 2024-25 UEFA Champions League, sourced from FBref:
